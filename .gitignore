@@ -1,0 +1,6 @@
+__pycache__/
+.DS_Store
+checkpoints/
+data/__pycache__
+data/modelnet*
+.vscode
