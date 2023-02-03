@@ -20,26 +20,15 @@ class ModelNet40(Dataset):
     Each class has 9840 training samples and 2468 test samples.
     Each sample is a point cloud with 2048 points.
 
-    Parameters
-    ----------
-    num_points: int
-        Number of points in each point cloud
-    transforms: callable
-        Transforms to be applied on a sample
-    train: bool
-        If True, use the training set, otherwise use the test set
-    normal_channel: bool
-        If True, use the normal information
-    download: bool
-        If True, download the dataset from the internet
-    folder: str
-        Name of the folder that contains the dataset
-    data: np.ndarray
-        Shape (9840, 2048, 3) or (9840, 2048, 6)
-    label: np.ndarray
-        Shape (9840,)
-    include_shapes: bool
-        If True, include the shape of the point cloud in the sample
+    Args:
+        num_points (int): Number of points in each point cloud
+        transforms (callable): Transforms to be applied on a sample
+        train (bool): If True, use the training set, otherwise use the test set
+        normal_channel (bool): If True, use the normal information
+        folder (str): Name of the folder that contains the dataset
+        data (np.ndarray): Shape (9840, 2048, 3) or (9840, 2048, 6)
+        label (np.ndarray): Shape (9840,)
+        include_shapes (bool): If True, include the shape of the point cloud in the sample
     """
 
     def __init__(
