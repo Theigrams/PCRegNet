@@ -157,7 +157,6 @@ class ModelNet40(Dataset):
 
 
 if __name__ == "__main__":
-
     import torch
     from torchvision import transforms
 
@@ -170,7 +169,7 @@ if __name__ == "__main__":
             d_utils.PointcloudJitter(),
         ]
     )
-    dset = ModelNet40(16, train=True, transforms=transforms)
+    dset = ModelNet40(num_points=16, train=True, transforms=transforms, download=False)
     print(dset[0][0])
     print(dset[0][1])
     print(len(dset))

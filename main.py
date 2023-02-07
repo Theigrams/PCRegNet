@@ -8,6 +8,6 @@ import torch
 import torchvision
 from tqdm import tqdm
 
-from data.dataloaders import ModelNet40
+from data.data_loaders import ModelNet40
 from models import pcrnet
 
