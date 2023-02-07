@@ -91,7 +91,7 @@ class ModelNet40(Dataset):
 
     def __getitem__(self, pc_idx):
         """The __getitem__ method randomly selects self.num_points points from
-        the point cloud.
+        the pc_idx point cloud.
         """
         point_set = self.data[pc_idx, ...]
         label = self.label[pc_idx]
