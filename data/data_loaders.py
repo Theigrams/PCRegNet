@@ -3,6 +3,7 @@ import os
 import sys
 import json
 
+import torch
 from torch.utils.data import Dataset
 import numpy as np
 import h5py
@@ -87,24 +88,25 @@ class ModelNet40(Dataset):
                 )
                 with open(json_path, "r") as f:
                     shapes = json.load(f)
-                self.shapes.append(shapes)
+                self.shapes += shapes
 
     def __getitem__(self, pc_idx):
         """The __getitem__ method randomly selects self.num_points points from
         the pc_idx point cloud.
         """
-        point_set = self.data[pc_idx, ...]
-        label = np.squeeze(self.label[pc_idx])
+        pc = self.data[pc_idx].copy()
+        # label = np.squeeze(self.label[pc_idx])
+        label = torch.from_numpy(self.label[pc_idx]).type(torch.LongTensor)
 
         # randomly selects self.num_points points from the point cloud
-        if self.num_points <= point_set.shape[0]:
-            pts_idx = np.arange(0, point_set.shape[0])
-            np.random.shuffle(pts_idx)
-            point_set = point_set[pts_idx[: self.num_points], :]
-        else:
+        if self.num_points > pc.shape[0]:
             raise ValueError(
                 "num_points should be smaller than the number of points in the point cloud."
             )
+        pts_idx = np.arange(0, pc.shape[0])
+        np.random.shuffle(pts_idx)
+        pts_idx = pts_idx[: self.num_points]
+        point_set = pc[pts_idx]
 
         if self.transforms:
             point_set = self.transforms(point_set)

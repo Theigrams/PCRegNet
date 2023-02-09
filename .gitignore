@@ -4,3 +4,4 @@ checkpoints/
 data/__pycache__
 data/modelnet*
 .vscode
+data/car_hdf5_2048/

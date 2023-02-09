@@ -25,6 +25,7 @@ def save_h5(h5_filename, data, label, data_dtype="uint8", label_dtype="uint8"):
     h5_fout.close()
 
 
+# load the dataset
 ModelNet40(
     NUMPOINTS,
     transforms=None,
@@ -51,7 +52,11 @@ for T, b in zip(("train", "test"), (True, False)):
     )
 
     # filter correct classes
-    newset = [x for x in dataset if all_categories[x[1]] in allowed_catagories]
+    newset = []
+    for x in dataset:
+        # print(f"label: {all_categories[x[1]]}")
+        if all_categories[x[1]] in allowed_catagories:
+            newset.append(x)
     loader = torch.utils.data.DataLoader(newset, batch_size=BATCHSIZE, shuffle=True)
 
     try:
