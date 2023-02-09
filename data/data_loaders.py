@@ -60,8 +60,8 @@ class ModelNet40(Dataset):
             self.download_data()
         if not os.path.exists(self.data_dir):
             d_utils.unzip_data(self.zip_file_path, BASE_DIR, delete_zip_file=False)
-        else:
-            print("Data folder %s already exists." % (self.data_dir))
+        # else:
+        #     print("Data folder %s already exists." % (self.data_dir))
 
         # get the list of dataset files
         if self.train:
@@ -94,10 +94,10 @@ class ModelNet40(Dataset):
         the pc_idx point cloud.
         """
         point_set = self.data[pc_idx, ...]
-        label = self.label[pc_idx]
+        label = np.squeeze(self.label[pc_idx])
 
         # randomly selects self.num_points points from the point cloud
-        if self.num_points < point_set.shape[0]:
+        if self.num_points <= point_set.shape[0]:
             pts_idx = np.arange(0, point_set.shape[0])
             np.random.shuffle(pts_idx)
             point_set = point_set[pts_idx[: self.num_points], :]
