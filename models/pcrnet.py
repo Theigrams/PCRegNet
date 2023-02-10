@@ -56,5 +56,7 @@ if __name__ == "__main__":
     y = torch.from_numpy(np.random.rand(4, 1024, 3).astype(np.float32))
     model = PCRNet()
     z, pre_normalized_quat = model(x, y)
+    print("Network Architecture: ")
+    print(model)
     print(f"input shape: {x.shape}, {y.shape}")
     print(f"output shape: {z.shape}, {pre_normalized_quat.shape}")

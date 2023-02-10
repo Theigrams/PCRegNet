@@ -52,5 +52,7 @@ if __name__ == "__main__":
     x = torch.from_numpy(np.random.rand(4, 1024, 3).astype(np.float32))
     model = PointNet()
     y = model(x)
+    print("Network Architecture: ")
+    print(model)
     print(f"input shape: {x.shape}")
     print(f"output shape: {y.shape}")
