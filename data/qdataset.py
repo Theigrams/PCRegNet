@@ -1,14 +1,14 @@
+import os
 import sys
-from os.path import abspath, join, dirname
-
-sys.path.insert(0, join(abspath(dirname(__file__)), ".."))
 
 import torch
 import numpy as np
 import kornia.geometry.conversions as C  # works with (x, y, z, w) quaternions
 import kornia.geometry.linalg as L
 
-
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.dirname(BASE_DIR)
+sys.path.append(ROOT_DIR)
 import tools.quaternion as Q  # works with (w, x, y, z) quaternions
 
 
@@ -187,7 +187,7 @@ class QuaternionFixedDataset(torch.utils.data.Dataset):
 
 
 if __name__ == "__main__":
-    from data.data_loaders import ModelNet40
+    from data.modelnet40 import ModelNet40
     from data.data_utils import PointcloudToTensor
     import torchvision
 

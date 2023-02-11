@@ -1,10 +1,14 @@
-import json
 import os
+import sys
+import json
 
 import torch
 import h5py
 
-from data_loaders import ModelNet40
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.dirname(BASE_DIR)
+sys.path.append(ROOT_DIR)
+from data.modelnet40 import ModelNet40
 
 CATEGORY = "car"
 FOLDER40 = "modelnet40_ply_hdf5_2048"
