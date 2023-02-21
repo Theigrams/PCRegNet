@@ -32,6 +32,7 @@ class PointNet(nn.Module):
         return backbone
 
     def forward(self, x):
+        # If the input shape is bnc, permute the dimensions to bcn
         if self.input_shape == "bnc":
             x = x.permute(0, 2, 1)
         if x.shape[1] != self.in_dim:
@@ -41,7 +42,7 @@ class PointNet(nn.Module):
 
         y = self.layers(x)  # [Batch x emb_dims x NumInPoints]
 
-        # max pooling for global feature
+        # Apply max pooling for global feature
         y = self.pooling(y)  # [Batch x emb_dims]
         return y
 
