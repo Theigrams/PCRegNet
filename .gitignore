@@ -1,7 +1,4 @@
-__pycache__/
 .DS_Store
+__pycache__/
 checkpoints/
-data/__pycache__
-data/modelnet*
-.vscode
-data/car_hdf5_2048/
+.vscode/
