@@ -9,7 +9,7 @@ import kornia.geometry.linalg as L
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
 sys.path.append(ROOT_DIR)
-import tools.quaternion as Q  # works with (w, x, y, z) quaternions
+import src.quaternion as Q  # works with (w, x, y, z) quaternions
 
 
 def deg2rad(deg):
