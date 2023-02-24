@@ -22,3 +22,6 @@
 ## Dependencies
 
 the Chamfer Distance is downloaded from <https://github.com/chrdiller/pyTorchChamferDistance>.
+
+the EMD with PyTorch is downloaded from <https://github.com/vinits5/emd>.
+
